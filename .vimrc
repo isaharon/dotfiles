@@ -23,8 +23,8 @@ silent! if plug#begin('~/.vim/plugged')
     Plug 'vifm/vifm.vim'
     Plug 'vim-pandoc/vim-pandoc'
     Plug 'vim-pandoc/vim-pandoc-syntax'
-    Plug 'vimwiki/vimwiki'
     Plug 'lervag/vimtex'
+    Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'}
 
     " Theme Plugins
     Plug 'itchyny/lightline.vim'
@@ -33,11 +33,14 @@ silent! if plug#begin('~/.vim/plugged')
     call plug#end()
 endif
 
+filetype plugin on
+syntax enable
+
 " General config
 set number			" Show line numbers
 set linebreak			" Break lines at word (requires Wrap lines)
 set showbreak=+++		" Wrap-broken line prefix
-set textwidth=79		" Line wrap (number of cols)
+set textwidth=80		" Line wrap (number of cols)
 set showmatch			" Highlight matching brace
 set visualbell			" Use visual bell (no beeping)
 
@@ -58,10 +61,9 @@ set laststatus=1		" Enable status bar in one window
 set hidden			" Allow hidden buffers
 set backspace=indent,eol,start	" Backspace behaviour
 set colorcolumn=+1		" Display column line
-set wrap linebreak nolist	" Enable wordwrap
-
-" Disable auto-comment after pressing <ENTER>
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+set wrap nolist			" Enable wordwrap 
+set encoding=utf-8 
+autocmd FileType * set formatoptions=tcrqn21j " Perssonal format options
 
 "" Colorscheme settings
 
@@ -70,9 +72,23 @@ if (has("termguicolors"))
     set termguicolors
 endif
 
-syntax enable
 let g:material_theme_style = 'palenight'
 colorscheme material
 let g:lightline = {'colorscheme': 'material_vim'}
 
 "" End colorscheme settings
+
+" Vimtex settings
+let g:tex_flavor='latex'	" In case .tex is identified as .plaintex
+let g:vimtex_quickfix_mode=0	" Quickfix window never opened/closed automatically
+let g:vimtex_view_method='zathura' " Use Zathura as viewer application
+
+set conceallevel=1	    " Recommended settings
+let g:tex_conceal="abdgm"   " Requires tex-conceal
+" Fixes compilation error
+let g:vimtext_compiler_latexmk = {
+    \ 'build_dir': 'output',
+\}
+
+" Leader shortcuts
+nmap <Leader>s :nohls<CR>
