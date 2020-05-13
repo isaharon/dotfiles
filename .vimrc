@@ -23,8 +23,6 @@ silent! if plug#begin('~/.vim/plugged')
     Plug 'vifm/vifm.vim'
     Plug 'vim-pandoc/vim-pandoc'
     Plug 'vim-pandoc/vim-pandoc-syntax'
-    Plug 'lervag/vimtex'
-    Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'}
 
     " Theme Plugins
     Plug 'itchyny/lightline.vim'
@@ -33,39 +31,74 @@ silent! if plug#begin('~/.vim/plugged')
     call plug#end()
 endif
 
-filetype plugin on
-syntax enable
-
 " General config
-set number			" Show line numbers
-set linebreak			" Break lines at word (requires Wrap lines)
-set showbreak=+++		" Wrap-broken line prefix
-set textwidth=80		" Line wrap (number of cols)
-set showmatch			" Highlight matching brace
-set visualbell			" Use visual bell (no beeping)
-
-set hlsearch			" Highlight all search results
-set smartcase			" Enable smart-case search
-set ignorecase			" Always case-insensitive
-set incsearch			" Searches for strings incrementally
-
-set autoindent			" Auto-indent new lines
-set shiftwidth=4		" Number of auto-indent spaces
-set smartindent			" Enable smart-indent
-set smarttab			" Enable smart-tabs
-set softtabstop=4		" Number of spaces per Tab
-
-set wildmenu			" Auto-completion for command line
-set laststatus=1		" Enable status bar in one window
-
-set hidden			" Allow hidden buffers
 set backspace=indent,eol,start	" Backspace behaviour
-set colorcolumn=+1		" Display column line
-set wrap nolist			" Enable wordwrap 
-set encoding=utf-8 
-autocmd FileType * set formatoptions=tcrqn21j " Perssonal format options
+set history=1000                " Bigger history, default is 50
+set showcmd			            " Show incomplete commands at bottom
+set showmode			        " Show current mode at bottom
+set autoread			        " Re-read files if unmodified in vim
+set hidden			            " Allow hidden buffers
+
+" User Interface
+set laststatus=2		        " Enable status bar always
+set wildmenu			        " Auto-completion for command line
+set cursorline			        " Highlight the line current under cursor
+set number			            " Show line numbers
+set linebreak			        " Break lines at word (requires Wrap lines)
+set visualbell			        " Use visual bell (no beeping)
+set mouse=a			            " Enable mouse for scrolling and resizing
+set background=dark		        " Colors for dark background
+set title			            " Set window's title
+set showbreak=+++		        " Wrap-broken line prefix
+set textwidth=80		        " Line wrap (number of cols)
+set showmatch			        " Highlight matching brace
+set colorcolumn=+1		        " Display column line
+
+" Swap files and backup
+set directory=$HOME/.vim/swp//	" // uses absolute path when creating file
+if !isdirectory($HOME . "/.vim/swp")
+    call mkdir($HOME . "/.vim/swp" , "p")
+endif
+set nobackup
+
+" Indentation 
+set autoindent			        " Auto-indent new lines
+filetype plugin indent on	    " Smart auto indentation (not old smartindent)
+set tabstop=4			        " Show existing tab with 4 spaces width
+set shiftwidth=4		        " Number of auto-indent spaces
+set expandtab			        " Insert spaces instead of tab
+set softtabstop=4		        " Number of spaces per Tab
+
+" Search
+set incsearch			        " Searches for strings incrementally
+set hlsearch			        " Highlight all search results
+set ignorecase			        " Always case-insensitive
+set smartcase			        " Enable smart-case search
+
+" Text rendering
+set encoding=utf-8		        " Support Unicode
+set wrap linebreak nolist	    " Enable wordwrap 
+set scrolloff=3			        " Number of lines above/below cursor
+set sidescrolloff=5		        " Number of lines left/right of cursor
+syntax enable
+autocmd FileType * set formatoptions=tcrqn21jp " Personal format options
+
+" Misc
+set confirm			            " Display confirmation when closing unsaved file
+set nomodeline			        " Ignore file's mode lines; use vimrc configs
+set nrformats-=octal		    " Exclude octals from number format
+
+" netrw settings
+let g:netrw_liststyle=3		    " Netrw: 0=thin, 1=long (time), 2=wide, 3=tree
+let g:netrw_browse_split=4	    " Open file in split: 0=same, 1=horizontal
+				                " 2=vertical, 3=new tab, 4=previous window
+let g:netrw_winsize=20		    " Width of netrw split (%)
 
 "" Colorscheme settings
+
+" set Vim-specific sequences for RGB colors (dwm)
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 " If you have vim >=8.0 or Neovim >= 0.1.5
 if (has("termguicolors"))
@@ -77,18 +110,6 @@ colorscheme material
 let g:lightline = {'colorscheme': 'material_vim'}
 
 "" End colorscheme settings
-
-" Vimtex settings
-let g:tex_flavor='latex'	" In case .tex is identified as .plaintex
-let g:vimtex_quickfix_mode=0	" Quickfix window never opened/closed automatically
-let g:vimtex_view_method='zathura' " Use Zathura as viewer application
-
-set conceallevel=1	    " Recommended settings
-let g:tex_conceal="abdgm"   " Requires tex-conceal
-" Fixes compilation error
-let g:vimtext_compiler_latexmk = {
-    \ 'build_dir': 'output',
-\}
 
 " Leader shortcuts
 nmap <Leader>s :nohls<CR>
