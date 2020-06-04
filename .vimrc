@@ -81,20 +81,21 @@ set wrap linebreak nolist	    " Enable wordwrap
 set scrolloff=3			        " Number of lines above/below cursor
 set sidescrolloff=5		        " Number of lines left/right of cursor
 syntax enable
-autocmd FileType * set formatoptions=crqn21jp " Personal format options
+autocmd FileType * set formatoptions=crql1jp " Personal format options
 
 " Misc
 set confirm			            " Display confirmation when closing unsaved file
 set nomodeline			        " Ignore file's mode lines; use vimrc configs
 set nrformats-=octal		    " Exclude octals from number format
+set foldmethod=manual
 
-" netrw settings
+" netrw config
 let g:netrw_liststyle=3		    " Netrw: 0=thin, 1=long (time), 2=wide, 3=tree
 let g:netrw_browse_split=4	    " Open file in split: 0=same, 1=horizontal
 				                " 2=vertical, 3=new tab, 4=previous window
 let g:netrw_winsize=20		    " Width of netrw split (%)
 
-"" Colorscheme settings
+"" Colorscheme
 
 " set Vim-specific sequences for RGB colors (dwm)
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -108,8 +109,6 @@ endif
 let g:material_theme_style = 'palenight'
 colorscheme material
 let g:lightline = {'colorscheme': 'material_vim'}
-
-"" End colorscheme settings
 
 " Leader config
 let mapleader = "\<Space>"
