@@ -81,7 +81,7 @@ set wrap linebreak nolist	    " Enable wordwrap
 set scrolloff=3			        " Number of lines above/below cursor
 set sidescrolloff=5		        " Number of lines left/right of cursor
 syntax enable
-autocmd FileType * set formatoptions=tcrqn21jp " Personal format options
+autocmd FileType * set formatoptions=crqn21jp " Personal format options
 
 " Misc
 set confirm			            " Display confirmation when closing unsaved file
@@ -111,5 +111,9 @@ let g:lightline = {'colorscheme': 'material_vim'}
 
 "" End colorscheme settings
 
+" Leader config
+let mapleader = "\<Space>"
+
 " Leader shortcuts
 nmap <Leader>s :nohls<CR>
+nmap <Leader>e :Lex<CR>
