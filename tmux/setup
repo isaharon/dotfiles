@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [[ -z "$(which tmux)" ]]; then
+    echo "tmux not installed. Skipping setup."
+    exit 1
+fi
+
+ln -sf "$PWD/tmux.conf" "$HOME/.tmux.conf"
+
+# check if on macOS
+if [[ $OSTYPE == 'darwin'* ]]; then
+	echo "Linked $(ls -l -G $HOME/.tmux.conf | cut -d ' ' -f 10-12)"
+else
+	echo "Linked $(ls -l --color=auto $HOME/.tmux.conf | cut -d ' ' -f 10-12)"
+fi
