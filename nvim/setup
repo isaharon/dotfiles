@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
 
-rm -rf "$HOME/.config/nvim"
-ln -s "$PWD" "$HOME/.config/nvim" 
+ln -sfn "$PWD" "$HOME/.config/nvim" 
