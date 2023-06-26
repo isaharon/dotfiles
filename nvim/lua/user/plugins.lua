@@ -1,10 +1,20 @@
 return {
+    -- Utility plugins
+    "tpope/vim-fugitive",
+    "tpope/vim-vinegar",
+    "tpope/vim-commentary",
+    { 'folke/which-key.nvim',               opts = {} },
     {
         'nvim-telescope/telescope.nvim',
         tag = '0.1.1',
         -- or                              , branch = '0.1.1',
         dependencies = { 'nvim-lua/plenary.nvim' }
     },
+    {
+        'nvim-treesitter/nvim-treesitter',
+        build = ':TSUpdate'
+    },
+    -- UI related plugins
     {
         "folke/tokyonight.nvim",
         lazy = false,
@@ -15,10 +25,8 @@ return {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' }
     },
-    {
-        'nvim-treesitter/nvim-treesitter',
-        build = ':TSUpdate'
-    },
+    { "lukas-reineke/indent-blankline.nvim" },
+    -- LSP configuration
     {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
@@ -38,8 +46,8 @@ return {
             { 'hrsh7th/nvim-cmp' },     -- Required
             { 'hrsh7th/cmp-nvim-lsp' }, -- Required
             { 'L3MON4D3/LuaSnip' },     -- Required
+            { 'saadparwaiz1/cmp_luasnip' },
+            { 'rafamadriz/friendly-snippets' },
         }
     },
-    "tpope/vim-fugitive",
-    "tpope/vim-vinegar",
 }
