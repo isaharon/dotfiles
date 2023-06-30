@@ -2,8 +2,10 @@ return {
     -- Utility plugins
     "tpope/vim-fugitive",
     "tpope/vim-vinegar",
-    "tpope/vim-commentary",
-    { 'folke/which-key.nvim',               opts = {} },
+    {
+        'numToStr/Comment.nvim',
+        opts = {}
+    },
     {
         'nvim-telescope/telescope.nvim',
         tag = '0.1.1',
@@ -13,6 +15,11 @@ return {
     {
         'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate'
+    },
+    {
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        opts = {}
     },
     -- UI related plugins
     {
@@ -26,7 +33,7 @@ return {
         dependencies = { 'nvim-tree/nvim-web-devicons' }
     },
     { "lukas-reineke/indent-blankline.nvim" },
-    -- LSP configuration
+    -- LSP bundle
     {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
