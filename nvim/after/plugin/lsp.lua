@@ -1,4 +1,8 @@
-local lsp = require('lsp-zero').preset({})
+local lsp = require('lsp-zero').preset({
+    manage_nvim_cmp = {
+        set_sources = 'recommended',
+    }
+})
 
 lsp.on_attach(function(client, bufnr)
     lsp.default_keymaps({ buffer = bufnr })
@@ -32,15 +36,17 @@ cmp.setup({
         { name = 'luasnip' },
     },
     mapping = {
-        -- `Enter` key to confirm completion
         ['<CR>'] = cmp.mapping.confirm({ select = false }),
 
-        -- Navigate between snippet placeholder
         ['<C-f>'] = cmp_action.luasnip_jump_forward(),
         ['<C-b>'] = cmp_action.luasnip_jump_backward(),
 
-        -- Super Tab
-        ['<Tab>'] = cmp_action.luasnip_supertab(),
-        ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
-    }
+        ['<Tab>'] = cmp_action.tab_complete(),
+        ['<S-Tab>'] = cmp_action.select_prev_or_fallback(),
+
+    },
+    preselect = cmp.PreselectMode.None,
+    completion = {
+        completeopt = 'menu,menuone,noinsert'
+    },
 })

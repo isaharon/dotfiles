@@ -2,6 +2,7 @@ return {
     -- Utility plugins
     "tpope/vim-fugitive",
     "tpope/vim-vinegar",
+    "tpope/vim-unimpaired",
     {
         'numToStr/Comment.nvim',
         opts = {}
