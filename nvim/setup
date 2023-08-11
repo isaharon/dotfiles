@@ -1,3 +1,8 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
+
+if [[ -z "$(which nvim)" ]]; then
+    echo "nvim not installed. Skipping setup."
+    exit 1
+fi
 
 ln -sfn "$PWD" "$HOME/.config/nvim" 
