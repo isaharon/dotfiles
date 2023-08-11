@@ -1,14 +1,10 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 declare dotFilesDir=$PWD
 
-# Update OS and install dependencies
-cd $dotFilesDir/scripts
-$dotFilesDir/scripts/setup
-
 # Link configs
 cd $dotFilesDir
-for dir in $(ls -d */ | grep -v scripts/); do
+for dir in $(ls -d */); do
     cd $dotFilesDir/${dir%/}
     $PWD/setup
 done

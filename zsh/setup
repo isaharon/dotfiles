@@ -1,11 +1,12 @@
 #!/usr/bin/env zsh
 
-if [[ -z "$(which tmux)" ]]; then
-    echo "tmux not installed. Skipping setup."
+if [[ -z "$(which zsh)" ]]; then
+    echo "zsh not installed. Skipping setup."
     exit 1
 fi
 
-ln -sf "$PWD/tmux.conf" "$HOME/.tmux.conf"
+# append contents instead of full overwrite
+cat ./zshrc >> ~/.zshrc
 
 # check if on macOS
 if [[ $OSTYPE == 'darwin'* ]]; then
