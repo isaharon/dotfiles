@@ -1,8 +1,3 @@
----
-title: Dotfiles
-author: Isa Haron
----
-
 # My Dotfiles
 
 Personal dotfiles maintained for Mac.
