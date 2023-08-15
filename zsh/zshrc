@@ -114,4 +114,4 @@ export VISUAL=nvim
 alias vim=nvim
 
 # set up go directory
-export PATH=$PATH:(go env GOPATH)/bin
+export PATH=$PATH:$(go env GOPATH)/bin
