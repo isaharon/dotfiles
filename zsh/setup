@@ -5,8 +5,11 @@ if [[ -z "$(which zsh)" ]]; then
     exit 1
 fi
 
-if [[ -e "$HOME/.zshrc" ]]; then
-    mv "$HOME/.zshrc" "$HOME/.zshrc.bak"
-fi
-
 ln -sf "$PWD/zshrc" "$HOME/.zshrc"
+
+# check if on macOS
+if [[ $OSTYPE == 'darwin'* ]]; then
+	echo "Linked $(ls -l -G $HOME/.zshrc | cut -d ' ' -f 10-12)"
+else
+	echo "Linked $(ls -l --color=auto $HOME/.zshrc | cut -d ' ' -f 10-12)"
+fi
