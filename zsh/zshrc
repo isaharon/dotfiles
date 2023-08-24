@@ -48,3 +48,5 @@ alias vim=nvim
 
 # set up go directory
 export PATH=$PATH:$(go env GOPATH)/bin
+
+alias ls="ls --color=auto"

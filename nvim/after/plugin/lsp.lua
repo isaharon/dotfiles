@@ -11,12 +11,10 @@ end)
 
 lsp.ensure_installed({
     -- Replace these with whatever servers you want to install
-    'tsserver',
     'eslint',
-    'rust_analyzer',
     'golangci_lint_ls',
     'gopls',
-    'ansiblels',
+    'pyright',
 })
 
 -- (Optional) Configure lua language server for neovim
