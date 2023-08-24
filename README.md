@@ -12,7 +12,23 @@ Configuration for tools include:
 
 ## Requirements
 
-- Apps/dependencies are assumed to be installed
+### Linux/Debian
+
+```shell
+# Packages
+sudo apt-get install git zsh tmux build-essential go
+
+# pure
+mkdir -p "$HOME/.zsh"
+git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
+
+# neovim
+sudo apt-get install ninja-build gettext cmake unzip curl
+git clone https://github.com/neovim/neovim
+cd neovim
+make CMAKE_BUILD_TYPE=RelWithDebInfo
+sudo make install
+```
 
 ## Usage
 
