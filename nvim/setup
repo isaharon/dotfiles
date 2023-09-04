@@ -9,7 +9,7 @@ ln -sfn "$PWD" "$HOME/.config/nvim"
 
 # check if on macOS
 if [[ $OSTYPE == 'darwin'* ]]; then
-	echo "Linked $(ls -l -G $HOME/.config/nvim | cut -d ' ' -f 10-12)"
+	echo "Linked $(ls -l -G $HOME/.config/nvim | tr -s ' ' | cut -d ' ' -f 9-11)"
 else
 	echo "Linked $(ls -l --color=auto $HOME/.config/nvim | cut -d ' ' -f 10-12)"
 fi
