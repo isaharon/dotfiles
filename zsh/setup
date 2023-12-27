@@ -5,7 +5,12 @@ if [[ -z "$(which zsh)" ]]; then
     exit 1
 fi
 
-ln -sf "$PWD/zshrc" "$HOME/.zshrc"
+
+if [[ $OSTYPE == 'darwin'* ]]; then
+    ln -sf "$PWD/zshrc" "$HOME/.zshrc"
+else
+    ln -sf "$PWD/zshrc-kali" "$HOME/.zshrc"
+fi
 
 # check if on macOS
 if [[ $OSTYPE == 'darwin'* ]]; then
