@@ -1,0 +1,78 @@
+" Don't try to be vi compatible
+set nocompatible
+
+" filetype plugin indent on re-enabled at call plug#end()
+filetype off
+
+"" Plugin Config
+
+" download vim-plug if missing
+if empty(glob("~/.vim/autoload/plug.vim"))
+    silent! execute '!curl --create-dirs -fsSLo ~/.vim/autoload/plug.vim 
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    autocmd VimEnter * silent! PlugInstall --sync | source $MYVIMRC
+endif
+
+" declare plugins
+silent! if plug#begin('~/.vim/plugged')
+
+    " Standard plugins
+    Plug 'tpope/vim-sensible'
+    Plug 'tpope/vim-unimpaired'
+    Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-commentary'
+    Plug 'tpope/vim-vinegar'
+
+    " Python plugins
+    Plug 'psf/black'
+    Plug 'nvie/vim-flake8'
+
+    " Extra plugins
+    Plug 'luochen1990/rainbow'
+
+    call plug#end()
+endif
+
+"" Swap Config
+
+" Set up persistent undo across all files.
+set undofile
+if !isdirectory(expand("$HOME/.vim/undodir"))
+    call mkdir(expand("$HOME/.vim/undodir"), "p")
+endif
+set undodir=$HOME/.vim/undodir
+
+" Disable backup, swap, undofile
+set nobackup
+set noswapfile
+
+"" General config
+
+" Indentation
+set autoindent
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set softtabstop=4
+set shiftround						" > and < follows shiftwidth
+set smarttab						" Useful for alignment
+set textwidth=79
+
+" User Interface
+set laststatus=2
+set wildmenu
+set number
+set visualbell
+set showmatch
+set colorcolumn=+1
+set showbreak=+++
+set background=dark
+set mouse=a
+
+"" Plugin Config
+
+" Rainbow config
+let g:rainbow_active = 1
+
+" Black config
+autocmd BufWritePre *.py execute ':Black'
