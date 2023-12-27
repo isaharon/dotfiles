@@ -16,7 +16,7 @@ else
 	echo "Linked $(ls -l --color=auto $HOME/.vimrc | cut -d ' ' -f 10-12)"
 fi
 
-read -p "Set vim plugins? (y/n) " response
+read "response?Set vim plugins? (y/n)"
 if [[ $response = y ]]; then
     # Set up vim plugins
     # Should only be run with dependencies installed else it fails
