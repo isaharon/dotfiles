@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 # Check for vim
 if [[ -z "$(which vim)" || -z "$(which vimtutor)" ]]; then
