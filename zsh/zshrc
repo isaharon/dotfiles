@@ -38,10 +38,6 @@ export PATH=$HOME/.local/bin:$PATH
 export EDITOR=vim
 export COLORTERM=truecolor
 
-# use nvim
-export VISUAL=nvim
-alias vim=nvim
-
 # set up go directory
 export PATH=$PATH:$(go env GOPATH)/bin
 
