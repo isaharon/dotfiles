@@ -5,8 +5,12 @@ if [[ -z "$(which nvim)" ]]; then
     exit 1
 fi
 
-ln -sfn "$PWD" "$HOME/.config/nvim" 
+read "response?Setup nvim config? (y/n)"
+if [[ $response =~ ^[Nn]$ ]]; then
+    exit 0
+fi
 
+ln -sfn "$PWD" "$HOME/.config/nvim" 
 # check if on macOS
 if [[ $OSTYPE == 'darwin'* ]]; then
 	echo "Linked $(ls -l -G $HOME/.config/nvim | tr -s ' ' | cut -d ' ' -f 9-11)"

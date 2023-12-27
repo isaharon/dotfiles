@@ -5,8 +5,12 @@ if [[ -z "$(which tmux)" ]]; then
     exit 1
 fi
 
-ln -sf "$PWD/tmux.conf" "$HOME/.tmux.conf"
+read "response?Setup tmux config? (y/n)"
+if [[ $response =~ ^[Nn]$ ]]; then
+    exit 0
+fi
 
+ln -sf "$PWD/tmux.conf" "$HOME/.tmux.conf"
 # check if on macOS
 if [[ $OSTYPE == 'darwin'* ]]; then
 	echo "Linked $(ls -l -G $HOME/.tmux.conf | tr -s ' ' | cut -d ' ' -f 9-11)"

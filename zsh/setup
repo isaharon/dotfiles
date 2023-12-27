@@ -5,16 +5,16 @@ if [[ -z "$(which zsh)" ]]; then
     exit 1
 fi
 
-
-if [[ $OSTYPE == 'darwin'* ]]; then
-    ln -sf "$PWD/zshrc" "$HOME/.zshrc"
-else
-    ln -sf "$PWD/zshrc-kali" "$HOME/.zshrc"
+read "response?Setup zsh config? (y/n)"
+if [[ $response =~ ^[Nn]$ ]]; then
+    exit 0
 fi
 
 # check if on macOS
 if [[ $OSTYPE == 'darwin'* ]]; then
+    ln -sf "$PWD/zshrc" "$HOME/.zshrc"
 	echo "Linked $(ls -l -G $HOME/.zshrc | tr -s ' ' | cut -d ' ' -f 9-11)"
 else
+    ln -sf "$PWD/zshrc-kali" "$HOME/.zshrc"
 	echo "Linked $(ls -l --color=auto $HOME/.zshrc | cut -d ' ' -f 10-12)"
 fi

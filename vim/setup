@@ -6,9 +6,12 @@ if [[ -z "$(which vim)" || -z "$(which vimtutor)" ]]; then
     exit 1
 fi
 
-# Symbolically link vimrc
-ln -sf "$PWD/vimrc" "$HOME/.vimrc"
+read "response?Setup vim config? (y/n)"
+if [[ $response =~ ^[Nn]$ ]]; then
+    exit 0
+fi
 
+ln -sf "$PWD/vimrc" "$HOME/.vimrc"
 # Check if macOS
 if [[ $OSTYPE == 'darwin'* ]]; then
 	echo "Linked $(ls -l -G $HOME/.vimrc | cut -d ' ' -f 10-12)"
@@ -16,15 +19,14 @@ else
 	echo "Linked $(ls -l --color=auto $HOME/.vimrc | cut -d ' ' -f 10-12)"
 fi
 
+# Set up vim plugins
 read "response?Set vim plugins? (y/n)"
-if [[ $response = y ]]; then
-    # Set up vim plugins
-    # Should only be run with dependencies installed else it fails
-    echo "Setting up Vim..."
-    vim '+PlugUpdate' '+PlugClean!' '+PlugUpdate' '+qall'
-    echo "Done!"
-else
+if [[ $response =~ ^[Nn]$ ]]; then
     echo "Done."
     exit 0
 fi
 
+# Should only be run with dependencies installed else it fails
+echo "Setting up Vim..."
+vim '+PlugUpdate' '+PlugClean!' '+PlugUpdate' '+qall'
+echo "Done!"
