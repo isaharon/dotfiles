@@ -46,3 +46,6 @@ alias vim=nvim
 export PATH=$PATH:$(go env GOPATH)/bin
 
 alias ls="ls --color=auto"
+
+# sdkman
+source "$HOME/.sdkman/bin/sdkman-init.sh"
