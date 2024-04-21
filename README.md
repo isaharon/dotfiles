@@ -16,7 +16,7 @@ Configuration for tools include:
 
 ```shell
 # Packages
-sudo apt-get install git zsh tmux build-essential go nodejs npm
+sudo apt-get install git zsh tmux build-essential golang nodejs npm
 
 # pure
 mkdir -p "$HOME/.zsh"
