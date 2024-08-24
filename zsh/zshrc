@@ -35,13 +35,17 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 # Custom user settings beyond this line
 export PATH=$HOME/.local/bin:$PATH
 
-export EDITOR=vim
+export EDITOR=nvim
 export COLORTERM=truecolor
 
 # set up go directory
 export PATH=$PATH:$(go env GOPATH)/bin
 
 alias ls="ls --color=auto"
+alias vim="nvim"
 
 # sdkman
 source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
