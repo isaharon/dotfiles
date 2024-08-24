@@ -9,10 +9,9 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.softtabstop = 0 -- follows tabstop
 vim.opt.smarttab = true
-vim.opt.textwidth = 79
 
 -- User interface
-vim.opt.wrap = true
+vim.opt.wrap = false
 vim.opt.number = true
 vim.opt.visualbell = true
 vim.opt.showmatch = true
@@ -30,3 +29,14 @@ vim.opt.swapfile = false
 
 -- Set leader key
 vim.g.mapleader = " "
+
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
+
+vim.opt.termguicolors = true
+
+vim.opt.scrolloff = 8
+vim.opt.signcolumn = "yes"
+vim.opt.isfname:append("@-@")
+
+vim.opt.updatetime = 50

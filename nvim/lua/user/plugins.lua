@@ -9,7 +9,7 @@ return {
     },
     {
         'nvim-telescope/telescope.nvim',
-        tag = '0.1.1',
+        tag = '0.1.8',
         -- or                              , branch = '0.1.1',
         dependencies = { 'nvim-lua/plenary.nvim' }
     },
@@ -51,9 +51,9 @@ return {
             { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
             -- Autocompletion
-            { 'hrsh7th/nvim-cmp' },     -- Required
-            { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-            { 'L3MON4D3/LuaSnip' },     -- Required
+            { 'hrsh7th/nvim-cmp' },                                                                    -- Required
+            { 'hrsh7th/cmp-nvim-lsp' },                                                                -- Required
+            { 'L3MON4D3/LuaSnip',                 version = "v2.3", build = "make install_jsregexp" }, -- Required
             { 'saadparwaiz1/cmp_luasnip' },
             { 'rafamadriz/friendly-snippets' },
         }
