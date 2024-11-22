@@ -11,7 +11,7 @@ end)
 
 lsp.ensure_installed({
     -- Replace these with whatever servers you want to install
-    'eslint',
+    'lua_ls',
     'golangci_lint_ls',
     'gopls',
     'pyright',
