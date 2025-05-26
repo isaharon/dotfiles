@@ -18,6 +18,9 @@ else
     if grep -iq "kali" /etc/os-release; then
         ln -sf "$PWD/zshrc-kali" "$HOME/.zshrc"
         echo "Linked $(ls -l --color=auto $HOME/.zshrc | cut -d ' ' -f 10-12)"
+    elif grep -iq "ubuntu" /etc/os-release; then
+        ln -sf "$PWD/zshrc-ubuntu" "$HOME/.zshrc"
+        echo "Linked $(ls -l --color=auto $HOME/.zshrc | cut -d ' ' -f 10-12)"
     else
         ln -sf "$PWD/zshrc" "$HOME/.zshrc"
         echo "Linked $(ls -l --color=auto $HOME/.zshrc | cut -d ' ' -f 10-12)"

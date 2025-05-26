@@ -42,10 +42,10 @@ export COLORTERM=truecolor
 export PATH=$PATH:$(go env GOPATH)/bin
 
 alias ls="ls --color=auto"
-alias vim="nvim"
 
 # sdkman
 source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+alias exegol='sudo -E /home/qkx/.local/bin/exegol'
