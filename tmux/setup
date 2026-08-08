@@ -1,11 +1,11 @@
-#!/usr/bin/env zsh
+#!/usr/bin/bash
 
 if [[ -z "$(which tmux)" ]]; then
     echo "tmux not installed. Skipping setup."
     exit 1
 fi
 
-read "response?Setup tmux config? (y/n)"
+read -p "Setup tmux config? (y/n)" response
 if [[ $response =~ ^[Nn]$ ]]; then
     exit 0
 fi
